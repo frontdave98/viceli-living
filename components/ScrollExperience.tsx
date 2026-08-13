@@ -64,9 +64,9 @@ export function ScrollExperience({ children }: ScrollExperienceProps) {
               gsap.to(heroLines, {
                 opacity: 1,
                 y: 0,
-                duration: 0.85,
-                stagger: 0.12,
-                ease: "power3.out",
+                duration: 1.1,
+                stagger: 0.16,
+                ease: "power2.out",
                 delay: 0.05,
               });
             }
@@ -119,7 +119,7 @@ export function ScrollExperience({ children }: ScrollExperienceProps) {
                     trigger: hero,
                     start: "top top",
                     end: "bottom top",
-                    scrub: true,
+                    scrub: 0.85,
                   },
                 },
               );
@@ -144,7 +144,7 @@ export function ScrollExperience({ children }: ScrollExperienceProps) {
                     trigger: chapter,
                     start: "top 80%",
                     end: "center center",
-                    scrub: true,
+                    scrub: 0.85,
                   },
                 },
               );
@@ -159,13 +159,13 @@ export function ScrollExperience({ children }: ScrollExperienceProps) {
                 img,
                 { scale: 1 },
                 {
-                  scale: 1.06,
+                  scale: 1.04,
                   ease: "none",
                   scrollTrigger: {
                     trigger: img,
                     start: "top bottom",
                     end: "bottom top",
-                    scrub: true,
+                    scrub: 0.85,
                   },
                 },
               );
@@ -198,7 +198,7 @@ export function ScrollExperience({ children }: ScrollExperienceProps) {
                   start: "top top",
                   end: () => `+=${steps.length * 100}%`,
                   pin: true,
-                  scrub: 0.65,
+                  scrub: 1.1,
                   anticipatePin: 1,
                   invalidateOnRefresh: true,
                 },

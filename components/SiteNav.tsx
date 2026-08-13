@@ -71,7 +71,10 @@ export function SiteNav() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5 md:pt-6">
+      <header
+        className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5 md:pt-6"
+        style={{ viewTransitionName: "site-nav" }}
+      >
         <nav
           className="pointer-events-auto relative w-full max-w-6xl"
           onMouseLeave={scheduleClose}

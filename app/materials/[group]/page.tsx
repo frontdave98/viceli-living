@@ -57,6 +57,7 @@ export default async function MaterialGroupPage({
               image={finish.image}
               title={finish.title}
               lede={finish.lede}
+              morphName={`catalog-material-${finish.group}-${finish.slug}`}
               primary={{ label: "Request a sample", href: primaryConsult }}
               secondary={{ label: "View finish", href: materialHref(finish) }}
             />

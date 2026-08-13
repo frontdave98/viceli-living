@@ -43,6 +43,7 @@ export default async function MaterialDetailPage({
         title={item.title}
         lede={item.lede}
         image={item.image}
+        morphName={`catalog-material-${item.group}-${item.slug}`}
         primary={item.cta.primary}
       />
       <CatalogFooter />

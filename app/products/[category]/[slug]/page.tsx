@@ -43,6 +43,7 @@ export default async function ProductDetailPage({
         title={item.title}
         lede={item.lede}
         image={item.image}
+        morphName={`catalog-product-${item.category}-${item.slug}`}
         primary={{ label: "Consult this piece", href: item.cta.primary.href }}
         secondary={item.cta.secondary}
         meta={

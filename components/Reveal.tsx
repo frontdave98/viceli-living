@@ -43,21 +43,21 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
 
         gsap.fromTo(
           el,
-          { opacity: 0, y: 40 },
+          { opacity: 0, y: 24 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 1.15,
             delay,
-            ease: "power3.out",
+            ease: "power2.out",
             overwrite: true,
             onComplete: markDone,
           },
         );
-        window.setTimeout(markDone, (delay + 0.95) * 1000);
+        window.setTimeout(markDone, (delay + 1.2) * 1000);
       };
 
-      gsap.set(el, { opacity: 0, y: 40 });
+      gsap.set(el, { opacity: 0, y: 24 });
       el.dataset.revealed = "false";
 
       const inView = () => {

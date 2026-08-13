@@ -40,6 +40,7 @@ export default async function ProjectDetailPage({
         title={item.name}
         lede={item.detail}
         image={item.image}
+        morphName={`catalog-project-${item.slug}`}
         primary={item.cta.primary}
         secondary={item.cta.secondary}
         meta={<p>Program: {item.program}</p>}

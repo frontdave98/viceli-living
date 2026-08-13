@@ -23,27 +23,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
   overflow-x: clip;
 }
 
-html:has(.home-story) {
-  scroll-snap-type: y proximity;
-}
-
-.home-story [data-chapter],
-.home-story [data-gsap="hero"] {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  scroll-margin-top: 5.5rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-    scroll-snap-type: none;
-  }
-
   *,
   *::before,
   *::after {
@@ -51,6 +34,72 @@ html:has(.home-story) {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* Route transitions — slow fade + rise */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.page-fade) {
+  animation: 500ms cubic-bezier(0.32, 0.72, 0, 1) both page-fade-out;
+}
+
+::view-transition-new(.page-fade) {
+  animation: 700ms cubic-bezier(0.32, 0.72, 0, 1) 80ms both page-fade-in;
+}
+
+@keyframes page-fade-out {
+  from {
+    opacity: 1;
+    translate: 0 0;
+  }
+  to {
+    opacity: 0;
+    translate: 0 -16px;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Keep nav pill anchored during route changes */
+::view-transition-group(site-nav) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(site-nav) {
+  display: none;
+}
+
+::view-transition-new(site-nav) {
+  animation: none;
+}
+
+::view-transition-group(.morph) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+::view-transition-image-pair(.morph) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 body {

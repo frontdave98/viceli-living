@@ -22,6 +22,7 @@ export default function ProjectsPage() {
               eyebrow={item.program}
               title={item.name}
               lede={item.detail}
+              morphName={`catalog-project-${item.slug}`}
               primary={item.cta.primary}
               secondary={item.cta.secondary}
             />

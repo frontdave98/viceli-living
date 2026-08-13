@@ -54,6 +54,7 @@ export default async function CollectionDetailPage({
               eyebrow={product.category}
               title={product.title}
               lede={product.lede}
+              morphName={`catalog-product-${product.category}-${product.slug}`}
               primary={{ label: "Consult", href: primaryConsult }}
               secondary={{ label: "View piece", href: productHref(product) }}
             />
