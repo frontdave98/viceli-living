@@ -13,6 +13,31 @@ export const brand = {
   googleBusiness: "https://share.google/BEsMpWuWsSCilN0G6",
 } as const;
 
+export const loader = {
+  wordmark: "VICÉLI",
+  sessionKey: "viceli-intro-seen",
+  doneEvent: "viceli:intro-done",
+} as const;
+
+export const heroSlides = [
+  {
+    src: "/images/hero.jpg",
+    alt: "Custom living room interior by Vicéli Living",
+  },
+  {
+    src: "/images/residence-pik.jpg",
+    alt: "Coastal suite residence furnished by Vicéli Living",
+  },
+  {
+    src: "/images/collection-sofas.jpg",
+    alt: "Custom sofa lounge by Vicéli Living",
+  },
+  {
+    src: "/images/residence-emerald.jpg",
+    alt: "Villa living program by Vicéli Living",
+  },
+] as const;
+
 export const story = {
   prologue: {
     eyebrow: "A prologue",
@@ -103,11 +128,11 @@ export const showrooms = [
 ] as const;
 
 export const navLinks = [
-  { href: "#atelier", label: "Atelier" },
-  { href: "#collections", label: "Pieces" },
-  { href: "#craft", label: "Making" },
-  { href: "#residences", label: "Rooms" },
-  { href: "#showrooms", label: "Visit" },
+  { href: "/products", label: "Products" },
+  { href: "/collections", label: "Collections" },
+  { href: "/projects", label: "Projects" },
+  { href: "/materials", label: "Materials" },
+  { href: "/visit", label: "Visit" },
 ] as const;
 
 /** Chapter rail anchors for storytelling progress */

@@ -8,6 +8,7 @@ export function Craft() {
     <section
       id="craft"
       data-gsap="craft"
+      data-chapter="craft"
       className="relative border-y border-hairline bg-background"
     >
       {/* Mobile: stacked story steps */}

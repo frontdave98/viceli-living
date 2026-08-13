@@ -1,39 +1,108 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Image from "next/image";
-import { primaryConsult, story } from "@/lib/content";
-import { BrandLogo } from "./BrandLogo";
+import { useRef } from "react";
+import { heroSlides, primaryConsult, story } from "@/lib/content";
 import { ConsultButton } from "./ConsultButton";
 import { notifyScrollRefresh } from "./notifyScrollRefresh";
 
+gsap.registerPlugin(useGSAP);
+
+const HOLD = 5.4;
+const FADE = 1.4;
+
 export function Hero() {
+  const mediaRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const root = mediaRef.current;
+      if (!root) return;
+
+      const slides = gsap.utils.toArray<HTMLElement>(
+        root.querySelectorAll("[data-hero-slide]"),
+      );
+      if (slides.length < 2) return;
+
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) {
+        gsap.set(slides, { opacity: 0 });
+        gsap.set(slides[0], { opacity: 1 });
+        return;
+      }
+
+      gsap.set(slides, { opacity: 0 });
+      gsap.set(slides[0], { opacity: 1 });
+
+      const tl = gsap.timeline({ repeat: -1 });
+      for (let i = 0; i < slides.length; i += 1) {
+        const current = slides[i];
+        const next = slides[(i + 1) % slides.length];
+        tl.to(current, {
+          opacity: 0,
+          duration: FADE,
+          ease: "power2.inOut",
+          delay: HOLD,
+        }).to(
+          next,
+          {
+            opacity: 1,
+            duration: FADE,
+            ease: "power2.inOut",
+          },
+          "<",
+        );
+      }
+
+      return () => {
+        tl.kill();
+      };
+    },
+    { scope: mediaRef },
+  );
+
   return (
     <section
       id="top"
       data-gsap="hero"
       className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden"
     >
-      <div data-gsap="hero-media" className="absolute inset-0 will-change-transform">
-        <Image
-          src="/images/hero.jpg"
-          alt="Custom living room interior by Vicéli Living"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          onLoad={notifyScrollRefresh}
-        />
+      <div
+        ref={mediaRef}
+        data-gsap="hero-media"
+        className="absolute inset-0 will-change-transform"
+      >
+        {heroSlides.map((slide, i) => (
+          <div
+            key={slide.src}
+            data-hero-slide
+            className="absolute inset-0"
+            style={{ opacity: i === 0 ? 1 : 0 }}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={i === 0}
+              sizes="100vw"
+              className="object-cover"
+              onLoad={i === 0 ? notifyScrollRefresh : undefined}
+            />
+          </div>
+        ))}
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/20" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 pb-24 pt-28 md:px-8 md:pb-24">
         <div data-gsap="hero-copy">
-          <div data-gsap="hero-line" className="mb-8 flex items-center gap-3">
-            <BrandLogo size={44} className="rounded-md ring-1 ring-white/10" />
-            <p className="text-[11px] uppercase tracking-[0.28em] text-stone/70">
-              {story.prologue.eyebrow}
-            </p>
-          </div>
+          <p
+            data-gsap="hero-line"
+            className="mb-8 text-[11px] uppercase tracking-[0.28em] text-stone/70"
+          >
+            {story.prologue.eyebrow}
+          </p>
           <h1
             data-gsap="hero-line"
             className="max-w-3xl font-display text-4xl leading-[1.05] tracking-tight text-stone md:text-6xl lg:text-7xl"

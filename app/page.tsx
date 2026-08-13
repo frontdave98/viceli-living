@@ -5,19 +5,18 @@ import { CloseFooter } from "@/components/CloseFooter";
 import { Collections } from "@/components/Collections";
 import { Craft } from "@/components/Craft";
 import { Hero } from "@/components/Hero";
+import { PageLoader } from "@/components/PageLoader";
 import { Proof } from "@/components/Proof";
 import { Residences } from "@/components/Residences";
 import { ScrollExperience } from "@/components/ScrollExperience";
 import { Showrooms } from "@/components/Showrooms";
-import { SiteNav } from "@/components/SiteNav";
 
 export default function Home() {
   return (
     <>
-      <div className="grain" aria-hidden />
-      <SiteNav />
+      <PageLoader />
       <ChapterRail />
-      <main className="flex-1">
+      <main className="home-story flex-1">
         <ScrollExperience>
           <Hero />
           <Atelier />

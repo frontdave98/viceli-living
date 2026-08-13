@@ -4,23 +4,36 @@ import Link from "next/link";
 import { brand, showrooms, story } from "@/lib/content";
 import { Reveal } from "./Reveal";
 
-export function Showrooms() {
-  return (
-    <section id="showrooms" data-chapter="showrooms" className="bg-background px-4 py-24 md:px-8 md:py-32">
-      <div className="mx-auto max-w-[1400px]">
-        <Reveal>
-          <h2 className="font-display text-4xl tracking-tight text-stone md:text-5xl">
-            {story.showrooms.title}
-          </h2>
-          <p className="mt-4 max-w-md text-stone/60">
-            {story.showrooms.body}
-          </p>
-        </Reveal>
+type ShowroomsProps = {
+  hideIntro?: boolean;
+};
 
-        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
+export function Showrooms({ hideIntro = false }: ShowroomsProps) {
+  return (
+    <section
+      id="showrooms"
+      data-chapter="showrooms"
+      className={`bg-background px-4 md:px-8 ${hideIntro ? "py-0" : "py-24 md:py-32"}`}
+    >
+      <div className="mx-auto max-w-[1400px]">
+        {hideIntro ? null : (
+          <Reveal>
+            <h2 className="font-display text-4xl tracking-tight text-stone md:text-5xl">
+              {story.showrooms.title}
+            </h2>
+            <p className="mt-4 max-w-md text-stone/60">
+              {story.showrooms.body}
+            </p>
+          </Reveal>
+        )}
+
+        <div className={`grid grid-cols-1 gap-8 lg:grid-cols-2 ${hideIntro ? "" : "mt-14"}`}>
           {showrooms.map((room, i) => (
             <Reveal key={room.id} delay={0.08 * i}>
-              <article className="rounded-[2rem] bg-white/5 p-1.5 ring-1 ring-white/10">
+              <article
+                id={`showroom-${room.id}`}
+                className="scroll-mt-28 rounded-[2rem] bg-white/5 p-1.5 ring-1 ring-white/10"
+              >
                 <div className="overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink">
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <div data-gsap="zoom-image" className="absolute inset-0 will-change-transform">

@@ -11,9 +11,9 @@ export function Residences() {
       id="residences"
       data-gsap="residences"
       data-chapter="residences"
-      className="bg-background py-24 md:py-0 md:h-[100dvh] md:flex md:flex-col md:justify-center"
+      className="bg-background py-24 md:flex md:h-[100dvh] md:flex-col md:pt-28 md:pb-28"
     >
-      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-8 md:pt-24">
+      <div className="mx-auto w-full max-w-[1400px] shrink-0 px-4 md:px-8">
         <Reveal>
           <p className="font-display text-sm tracking-[0.35em] text-muted">
             {story.residences.roman}
@@ -27,18 +27,19 @@ export function Residences() {
         </Reveal>
       </div>
 
-      <div className="scrollbar-hide mt-12 w-full overflow-x-auto md:mt-14 md:overflow-hidden">
+      <div className="scrollbar-hide mt-12 w-full overflow-x-auto md:mt-10 md:min-h-0 md:flex-1 md:overflow-hidden">
         <div
           data-gsap="residences-track"
-          className="flex w-max gap-5 px-4 pb-4 snap-x snap-mandatory md:snap-none md:pb-8 md:will-change-transform"
+          className="flex w-max gap-8 px-4 pb-8 snap-x snap-mandatory md:h-full md:gap-10 md:px-8 md:pb-0 md:snap-none md:will-change-transform"
         >
           {residences.map((place, i) => (
             <article
               key={place.id}
-              className="w-[78vw] max-w-md shrink-0 snap-start sm:w-[55vw] lg:w-[28rem]"
+              id={`residence-${place.id}`}
+              className="flex w-[78vw] max-w-md shrink-0 snap-start flex-col scroll-mt-28 sm:w-[55vw] md:h-full lg:w-[28rem]"
             >
-              <div className="rounded-[2rem] bg-white/5 p-1.5 ring-1 ring-white/10">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[calc(2rem-0.375rem)]">
+              <div className="min-h-0 overflow-hidden rounded-[2rem] bg-white/5 p-1.5 ring-1 ring-white/10 md:flex-1">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[calc(2rem-0.375rem)] md:aspect-auto md:h-full">
                   <Image
                     src={place.image}
                     alt={`${place.name} residence`}
@@ -49,7 +50,7 @@ export function Residences() {
                   />
                 </div>
               </div>
-              <div className="mt-4 px-1">
+              <div className="mt-5 shrink-0 px-1 pb-1">
                 <h3 className="font-display text-2xl tracking-tight text-stone">
                   {place.name}
                 </h3>

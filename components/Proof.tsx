@@ -5,7 +5,7 @@ export function Proof() {
   return (
     <section
       id="proof"
-      className="border-y border-hairline bg-background px-4 py-24 md:px-8 md:py-28"
+      className="bg-background px-4 py-24 md:px-8 md:py-28"
     >
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-4">
@@ -30,8 +30,12 @@ export function Proof() {
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:col-span-8">
           {reviews.map((review, i) => (
-            <Reveal key={review.quote} delay={0.1 * (i + 1)}>
-              <blockquote className="border-t border-hairline pt-6">
+            <Reveal
+              key={review.quote}
+              delay={0.1 * (i + 1)}
+              className={i > 0 ? "border-t border-hairline pt-10 sm:border-t-0 sm:pt-0 sm:border-l sm:pl-10" : ""}
+            >
+              <blockquote>
                 <p className="font-display text-2xl leading-snug tracking-tight text-stone md:text-3xl">
                   &ldquo;{review.quote}&rdquo;
                 </p>

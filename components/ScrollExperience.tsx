@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, type ReactNode } from "react";
-import { chapterRail } from "@/lib/content";
+import { chapterRail, loader } from "@/lib/content";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -47,43 +47,61 @@ export function ScrollExperience({ children }: ScrollExperienceProps) {
             return;
           }
 
-          // Hero prologue lines
+          // Hold prologue lines until intro loader finishes.
           if (heroLines.length) {
             gsap.set(heroLines, { opacity: 0, y: 28 });
-            gsap.to(heroLines, {
-              opacity: 1,
-              y: 0,
-              duration: 0.85,
-              stagger: 0.12,
-              ease: "power3.out",
-              delay: 0.2,
-            });
+          }
+          if (scrollCue) {
+            gsap.set(scrollCue, { opacity: 0 });
           }
 
-          if (scrollCue) {
-            gsap.fromTo(
-              scrollCue,
-              { opacity: 0.25 },
-              {
-                opacity: 0.7,
-                duration: 1.6,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1,
-                delay: 1.2,
-              },
-            );
-            if (hero) {
-              gsap.to(scrollCue, {
-                opacity: 0,
-                scrollTrigger: {
-                  trigger: hero,
-                  start: "top top",
-                  end: "+=120",
-                  scrub: true,
-                },
+          let heroIntroPlayed = false;
+          const playHeroIntro = () => {
+            if (heroIntroPlayed) return;
+            heroIntroPlayed = true;
+
+            if (heroLines.length) {
+              gsap.to(heroLines, {
+                opacity: 1,
+                y: 0,
+                duration: 0.85,
+                stagger: 0.12,
+                ease: "power3.out",
+                delay: 0.05,
               });
             }
+
+            if (scrollCue) {
+              gsap.fromTo(
+                scrollCue,
+                { opacity: 0.25 },
+                {
+                  opacity: 0.7,
+                  duration: 1.6,
+                  ease: "sine.inOut",
+                  yoyo: true,
+                  repeat: -1,
+                  delay: 0.8,
+                },
+              );
+              if (hero) {
+                gsap.to(scrollCue, {
+                  opacity: 0,
+                  scrollTrigger: {
+                    trigger: hero,
+                    start: "top top",
+                    end: "+=120",
+                    scrub: true,
+                  },
+                });
+              }
+            }
+          };
+
+          window.addEventListener(loader.doneEvent, playHeroIntro);
+          // If loader already finished (or was skipped), play shortly after mount.
+          if (sessionStorage.getItem(loader.sessionKey) === "1") {
+            requestAnimationFrame(playHeroIntro);
           }
 
           // Desktop-only: parallax scale, chapter scrub, image zoom
@@ -311,6 +329,7 @@ export function ScrollExperience({ children }: ScrollExperienceProps) {
           }
 
           return () => {
+            window.removeEventListener(loader.doneEvent, playHeroIntro);
             window.removeEventListener("load", onLoad);
             window.removeEventListener("hashchange", onHash);
             document.removeEventListener("click", onAnchorClick, true);
