@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="Vicéli Living">
+  <rect width="120" height="120" fill="#121212"/>
+  <text
+    x="60"
+    y="54"
+    text-anchor="middle"
+    fill="#E6E2DC"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="22"
+    font-weight="400"
+    letter-spacing="0.18em"
+  >VICÉLI</text>
+  <text
+    x="60"
+    y="74"
+    text-anchor="middle"
+    fill="#E6E2DC"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="9"
+    font-weight="400"
+    letter-spacing="0.42em"
+  >LIVING</text>
+</svg>
