@@ -7,7 +7,7 @@ import {
   materialGroups,
   materialHref,
 } from "@/lib/catalog";
-import { primaryConsult } from "@/lib/content";
+import { brand, primaryConsult } from "@/lib/content";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -26,8 +26,8 @@ export async function generateMetadata({
   const item = getMaterialGroup(group);
   if (!item) return {};
   return {
-    title: `${item.title} — VICÉLI LIVING`,
-    description: `Finishes in ${item.title.toLowerCase()} for custom Vicéli pieces.`,
+    title: `${item.title} — ${brand.name}`,
+    description: `Finishes in ${item.title.toLowerCase()} for custom ${brand.shortName} pieces.`,
   };
 }
 

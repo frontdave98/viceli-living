@@ -1,6 +1,6 @@
 export const brand = {
-  name: "VICÉLI LIVING",
-  shortName: "Vicéli",
+  name: "MEUBELOUS",
+  shortName: "Meubelous",
   tagline: "Transform your space into the perfect room",
   category: "Custom-made furniture",
   description:
@@ -14,7 +14,7 @@ export const brand = {
 } as const;
 
 export const loader = {
-  wordmark: "VICÉLI",
+  wordmark: "MEUBELOUS",
   sessionKey: "viceli-intro-seen",
   doneEvent: "viceli:intro-done",
 } as const;
@@ -22,19 +22,19 @@ export const loader = {
 export const heroSlides = [
   {
     src: "/images/hero.jpg",
-    alt: "Custom living room interior by Vicéli Living",
+    alt: "Custom living room interior by Meubelous",
   },
   {
     src: "/images/residence-pik.jpg",
-    alt: "Coastal suite residence furnished by Vicéli Living",
+    alt: "Coastal suite residence furnished by Meubelous",
   },
   {
     src: "/images/collection-sofas.jpg",
-    alt: "Custom sofa lounge by Vicéli Living",
+    alt: "Custom sofa lounge by Meubelous",
   },
   {
     src: "/images/residence-emerald.jpg",
-    alt: "Villa living program by Vicéli Living",
+    alt: "Villa living program by Meubelous",
   },
 ] as const;
 
@@ -49,7 +49,7 @@ export const story = {
     roman: "I",
     title: "The atelier",
     headline: "Built where the brief meets the wood.",
-    body: "Vicéli Living is a custom furniture atelier in Indonesia. We measure the room, lock the materials, and make the piece — then ship it nationwide.",
+    body: "Meubelous is a custom furniture atelier in Indonesia. We measure the room, lock the materials, and make the piece — then ship it nationwide.",
   },
   collections: {
     roman: "II",
@@ -65,7 +65,7 @@ export const story = {
   residences: {
     roman: "IV",
     title: "The rooms",
-    headline: "Places already living with Vicéli.",
+    headline: "Places already living with Meubelous.",
     body: "From coastal suites to sky residences — rooms we furnished, one brief at a time.",
   },
   proof: {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ViewTransition, type ReactNode } from "react";
+import { KenBurns } from "@/components/KenBurns";
 import { PageTransition } from "@/components/PageTransition";
 import { CatalogCtas } from "./CatalogCtas";
 import type { Cta } from "@/lib/catalog";
@@ -30,7 +31,9 @@ export function CatalogDetail({
   const media = (
     <div className="overflow-hidden rounded-[2rem] bg-white/5 p-1.5 ring-1 ring-white/10 lg:col-span-7">
       <div className="relative aspect-[4/5] overflow-hidden rounded-[calc(2rem-0.375rem)] sm:aspect-[5/4] lg:aspect-[4/3]">
-        <Image src={image} alt={title} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
+        <KenBurns variant={1} duration={22}>
+          <Image src={image} alt={title} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
+        </KenBurns>
       </div>
     </div>
   );

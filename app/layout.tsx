@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { SiteNav } from "@/components/SiteNav";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { brand } from "@/lib/content";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -20,11 +21,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "VICÉLI LIVING — Custom Furniture, Jakarta",
+  title: `${brand.name} — Custom Furniture, Jakarta`,
   description:
     "Custom-made furniture atelier in Jakarta. Sofas, dining, mirrors, and office pieces. Showrooms at Golf Island PIK and Alam Sutera.",
   openGraph: {
-    title: "VICÉLI LIVING",
+    title: brand.name,
     description: "Transform your space into the perfect room.",
     type: "website",
   },

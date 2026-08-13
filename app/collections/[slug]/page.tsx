@@ -7,7 +7,7 @@ import {
   getProductsBySlugs,
   productHref,
 } from "@/lib/catalog";
-import { primaryConsult } from "@/lib/content";
+import { brand, primaryConsult } from "@/lib/content";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -26,7 +26,7 @@ export async function generateMetadata({
   const item = getCollectionLine(slug);
   if (!item) return {};
   return {
-    title: `${item.title} — VICÉLI LIVING`,
+    title: `${item.title} — ${brand.name}`,
     description: item.lede,
   };
 }

@@ -7,7 +7,7 @@ export function CatalogFooter() {
     <footer className="border-t border-hairline bg-background px-4 py-16 md:px-8">
       <div className="mx-auto flex max-w-[1400px] flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="font-display text-xl tracking-[0.12em] text-stone">VICÉLI LIVING</p>
+          <p className="font-display text-xl tracking-[0.12em] text-stone">{brand.name}</p>
           <p className="mt-2 max-w-sm text-sm text-muted">{brand.tagline}</p>
         </div>
         <ConsultButton href={primaryConsult} />

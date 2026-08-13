@@ -1,3 +1,5 @@
+import { brand } from "@/lib/content";
+
 type BrandLogoProps = {
   size?: number;
   className?: string;
@@ -12,32 +14,20 @@ export function BrandLogo({ size = 36, className = "" }: BrandLogoProps) {
       height={size}
       className={className}
       role="img"
-      aria-label="Vicéli Living"
+      aria-label={brand.shortName}
     >
       <rect width="120" height="120" fill="#121212" />
       <text
         x="60"
-        y="54"
+        y="66"
         textAnchor="middle"
         fill="#E6E2DC"
         fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="22"
+        fontSize="13"
         fontWeight="400"
-        letterSpacing="0.18em"
+        letterSpacing="0.12em"
       >
-        VICÉLI
-      </text>
-      <text
-        x="60"
-        y="74"
-        textAnchor="middle"
-        fill="#E6E2DC"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="9"
-        fontWeight="400"
-        letterSpacing="0.42em"
-      >
-        LIVING
+        {brand.name}
       </text>
     </svg>
   );

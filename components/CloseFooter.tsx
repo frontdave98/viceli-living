@@ -3,6 +3,7 @@ import Link from "next/link";
 import { brand, primaryConsult, showrooms, story } from "@/lib/content";
 import { BrandLogo } from "./BrandLogo";
 import { ConsultButton } from "./ConsultButton";
+import { KenBurns } from "./KenBurns";
 import { Reveal } from "./Reveal";
 
 export function CloseFooter() {
@@ -13,13 +14,15 @@ export function CloseFooter() {
         className="relative overflow-hidden border-t border-hairline bg-background px-4 py-28 md:px-8 md:py-36"
       >
         <div className="pointer-events-none absolute inset-0 opacity-40">
-          <Image
-            src="/images/hero.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover blur-sm scale-105"
-          />
+          <KenBurns variant={2} duration={28}>
+            <Image
+              src="/images/hero.jpg"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover blur-sm"
+            />
+          </KenBurns>
           <div className="absolute inset-0 bg-ink/85" />
         </div>
 
@@ -42,7 +45,7 @@ export function CloseFooter() {
             <BrandLogo size={40} className="rounded-md ring-1 ring-white/10" />
             <div>
               <p className="font-display text-xl tracking-[0.12em] text-stone">
-                VICÉLI LIVING
+                {brand.name}
               </p>
               <p className="mt-1 text-xs text-muted">{brand.tagline}</p>
             </div>
@@ -112,7 +115,7 @@ export function CloseFooter() {
         </div>
 
         <div className="mx-auto mt-12 max-w-[1400px] border-t border-hairline pt-6 text-xs text-muted">
-          © {new Date().getFullYear()} Vicéli Living. Custom furniture, Jakarta.
+          © {new Date().getFullYear()} {brand.shortName}. Custom furniture, Jakarta.
         </div>
       </footer>
     </>

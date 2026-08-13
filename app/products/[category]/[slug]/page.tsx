@@ -1,6 +1,7 @@
 import { CatalogDetail } from "@/components/catalog/CatalogDetail";
 import { CatalogFooter } from "@/components/catalog/CatalogFooter";
 import { getProduct, products } from "@/lib/catalog";
+import { brand } from "@/lib/content";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -22,7 +23,7 @@ export async function generateMetadata({
   const item = getProduct(category, slug);
   if (!item) return {};
   return {
-    title: `${item.title} — VICÉLI LIVING`,
+    title: `${item.title} — ${brand.name}`,
     description: item.lede,
   };
 }

@@ -278,7 +278,7 @@ export const catalogPages = {
   },
   projects: {
     eyebrow: "Projects",
-    title: "Rooms already living with Viceli.",
+    title: "Rooms already living with Meubelous.",
     body: "From coastal suites to sky residences. One brief at a time.",
   },
   collections: {

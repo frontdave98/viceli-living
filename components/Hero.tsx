@@ -3,9 +3,10 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { heroSlides, primaryConsult, story } from "@/lib/content";
 import { ConsultButton } from "./ConsultButton";
+import { KenBurns } from "./KenBurns";
 import { notifyScrollRefresh } from "./notifyScrollRefresh";
 
 gsap.registerPlugin(useGSAP);
@@ -15,6 +16,7 @@ const FADE = 1.4;
 
 export function Hero() {
   const mediaRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useGSAP(
     () => {
@@ -35,11 +37,13 @@ export function Hero() {
 
       gsap.set(slides, { opacity: 0 });
       gsap.set(slides[0], { opacity: 1 });
+      setActiveIndex(0);
 
       const tl = gsap.timeline({ repeat: -1 });
       for (let i = 0; i < slides.length; i += 1) {
         const current = slides[i];
-        const next = slides[(i + 1) % slides.length];
+        const nextIndex = (i + 1) % slides.length;
+        const next = slides[nextIndex];
         tl.to(current, {
           opacity: 0,
           duration: FADE,
@@ -51,6 +55,7 @@ export function Hero() {
             opacity: 1,
             duration: FADE,
             ease: "power2.inOut",
+            onStart: () => setActiveIndex(nextIndex),
           },
           "<",
         );
@@ -81,15 +86,21 @@ export function Hero() {
             className="absolute inset-0"
             style={{ opacity: i === 0 ? 1 : 0 }}
           >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={i === 0}
-              sizes="100vw"
-              className="object-cover"
-              onLoad={i === 0 ? notifyScrollRefresh : undefined}
-            />
+            <KenBurns
+              variant={i}
+              duration={18 + (i % 3) * 2}
+              active={i === activeIndex || i === (activeIndex + 1) % heroSlides.length}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className="object-cover"
+                onLoad={i === 0 ? notifyScrollRefresh : undefined}
+              />
+            </KenBurns>
           </div>
         ))}
       </div>

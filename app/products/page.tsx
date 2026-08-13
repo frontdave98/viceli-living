@@ -2,11 +2,11 @@ import { CatalogCard } from "@/components/catalog/CatalogCard";
 import { CatalogFooter } from "@/components/catalog/CatalogFooter";
 import { CatalogShell } from "@/components/catalog/CatalogShell";
 import { catalogPages, productCategories } from "@/lib/catalog";
-import { primaryConsult } from "@/lib/content";
+import { brand, primaryConsult } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products — VICÉLI LIVING",
+  title: `Products — ${brand.name}`,
   description: catalogPages.products.body,
 };
 

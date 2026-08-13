@@ -2,10 +2,11 @@ import { CatalogCard } from "@/components/catalog/CatalogCard";
 import { CatalogFooter } from "@/components/catalog/CatalogFooter";
 import { CatalogShell } from "@/components/catalog/CatalogShell";
 import { catalogPages, projects } from "@/lib/catalog";
+import { brand } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects — VICÉLI LIVING",
+  title: `Projects — ${brand.name}`,
   description: catalogPages.projects.body,
 };
 

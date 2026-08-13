@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { navTree } from "@/lib/catalog";
-import { primaryConsult } from "@/lib/content";
+import { loader, primaryConsult } from "@/lib/content";
 import { ConsultButton } from "./ConsultButton";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { MegaMenu } from "./MegaMenu";
@@ -87,9 +87,9 @@ export function SiteNav() {
             <Link
               href="/"
               className="shrink-0 pl-2 font-display text-lg tracking-[0.12em] text-stone"
-              aria-label="Vicéli Living home"
+              aria-label={`${loader.wordmark} home`}
             >
-              VICÉLI
+              {loader.wordmark}
             </Link>
 
             <div className="hidden min-w-0 flex-1 items-center justify-center overflow-hidden lg:flex">

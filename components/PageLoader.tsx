@@ -79,7 +79,7 @@ export function PageLoader() {
       className="fixed inset-0 z-[60] flex items-center justify-center bg-ink"
       role="status"
       aria-live="polite"
-      aria-label="Loading Vicéli Living"
+      aria-label={`Loading ${loader.wordmark}`}
     >
       <div className="flex flex-col items-center px-6">
         <p className="font-display text-xl tracking-[0.28em] text-stone md:text-2xl">

@@ -2,10 +2,11 @@ import { CatalogFooter } from "@/components/catalog/CatalogFooter";
 import { CatalogShell } from "@/components/catalog/CatalogShell";
 import { Showrooms } from "@/components/Showrooms";
 import { catalogPages } from "@/lib/catalog";
+import { brand } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Visit — VICÉLI LIVING",
+  title: `Visit — ${brand.name}`,
   description: catalogPages.visit.body,
 };
 

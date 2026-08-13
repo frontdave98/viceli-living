@@ -42,7 +42,7 @@ export function Atelier() {
               <div data-gsap="zoom-image" className="absolute inset-0 will-change-transform">
                 <Image
                   src="/images/collection-office.jpg"
-                  alt="Custom walnut office interior by Vicéli Living"
+                  alt="Custom walnut office interior by Meubelous"
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover"
