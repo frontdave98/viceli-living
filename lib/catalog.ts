@@ -1,4 +1,9 @@
+import * as dummy from "@/lib/data/dummy";
+import * as live from "@/lib/data/live";
+import { USE_DUMMY_DATA } from "@/lib/data/mode";
 import { brand, primaryConsult, residences, showrooms } from "@/lib/content";
+
+const productSource = USE_DUMMY_DATA ? dummy.products : live.products;
 
 export type Cta = {
   label: string;
@@ -65,98 +70,13 @@ export const productCategories = [
 
 export type ProductCategorySlug = (typeof productCategories)[number]["slug"];
 
-export const products = [
-  {
-    slug: "linen-lounge",
-    category: "sofas",
-    title: "Linen Lounge",
-    lede: "A low lounge in natural linen, made to the width of your room.",
-    image: "/images/collection-sofas.jpg",
-    finish: "Natural linen",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: tokopediaCta },
+export const products = productSource.map(({ secondaryCta, ...item }) => ({
+  ...item,
+  cta: {
+    primary: consultCta,
+    secondary: secondaryCta === "tokopedia" ? tokopediaCta : visitCta,
   },
-  {
-    slug: "boucle-corner",
-    category: "sofas",
-    title: "Boucle Corner",
-    lede: "A corner composition in boucle, built around how you sit together.",
-    image: "/images/hero.jpg",
-    finish: "Ivory boucle",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: visitCta },
-  },
-  {
-    slug: "leather-settee",
-    category: "sofas",
-    title: "Leather Settee",
-    lede: "A compact settee in leather for rooms that need a quieter seat.",
-    image: "/images/residence-gading.jpg",
-    finish: "Warm leather",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: tokopediaCta },
-  },
-  {
-    slug: "walnut-dining",
-    category: "dining",
-    title: "Walnut Dining",
-    lede: "A solid walnut table sized to the number of seats you actually use.",
-    image: "/images/collection-dining.jpg",
-    finish: "Oiled walnut",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: visitCta },
-  },
-  {
-    slug: "stone-table",
-    category: "dining",
-    title: "Stone Table",
-    lede: "A stone top on a quiet base, made for long dinners.",
-    image: "/images/residence-emerald.jpg",
-    finish: "Honed stone",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: tokopediaCta },
-  },
-  {
-    slug: "frameless-mirror",
-    category: "mirrors",
-    title: "Frameless Mirror",
-    lede: "A frameless pane cut to the wall, with a polished edge.",
-    image: "/images/collection-mirrors.jpg",
-    finish: "Polished edge",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: visitCta },
-  },
-  {
-    slug: "framed-arch",
-    category: "mirrors",
-    title: "Framed Arch",
-    lede: "An arched mirror in a thin metal frame for halls and dressing rooms.",
-    image: "/images/residence-bakrie.jpg",
-    finish: "Brushed metal frame",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: tokopediaCta },
-  },
-  {
-    slug: "focus-desk",
-    category: "office",
-    title: "Focus Desk",
-    lede: "A writing desk with cable drop and a top sized to your work.",
-    image: "/images/collection-office.jpg",
-    finish: "Walnut and steel",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: visitCta },
-  },
-  {
-    slug: "work-chair",
-    category: "office",
-    title: "Work Chair",
-    lede: "Upholstered seating for a study, specified with the desk.",
-    image: "/images/residence-ancol.jpg",
-    finish: "Leather or linen",
-    madeToMeasure: true,
-    cta: { primary: consultCta, secondary: tokopediaCta },
-  },
-] as const;
+}));
 
 export const projects = residences.map((place) => ({
   slug: place.id,

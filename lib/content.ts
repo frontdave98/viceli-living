@@ -1,3 +1,9 @@
+import * as dummy from "@/lib/data/dummy";
+import * as live from "@/lib/data/live";
+import { USE_DUMMY_DATA } from "@/lib/data/mode";
+
+const source = USE_DUMMY_DATA ? dummy : live;
+
 export const brand = {
   name: "MEUBELOUS",
   shortName: "Meubelous",
@@ -8,9 +14,9 @@ export const brand = {
   rating: 4.9,
   reviewCount: 15,
   hours: "Open daily · Closes 19:00",
-  instagram: "https://www.instagram.com/viceliliving/",
-  tokopedia: "https://www.tokopedia.com/viceli-living",
-  googleBusiness: "https://share.google/BEsMpWuWsSCilN0G6",
+  instagram: source.brandContacts.instagram,
+  tokopedia: source.brandContacts.tokopedia,
+  googleBusiness: source.brandContacts.googleBusiness,
 } as const;
 
 export const loader = {
@@ -100,32 +106,7 @@ export const story = {
 
 export type BridgeId = keyof typeof story.bridges;
 
-export const showrooms = [
-  {
-    id: "pik",
-    name: "Golf Island PIK",
-    label: "Showroom PIK",
-    address: "Beach Theme Park, Block D No. 70 L",
-    city: "Jakarta Utara 14460",
-    phone: "+62 813 1188 8048",
-    phoneHref: "tel:+6281311888048",
-    whatsapp: "https://wa.me/6281311888048",
-    maps: "https://maps.google.com/?q=Viceli+Living+Golf+Island+PIK",
-    image: "/images/showroom-pik.jpg",
-  },
-  {
-    id: "alam-sutera",
-    name: "Alam Sutera",
-    label: "Showroom Alam Sutera",
-    address: "Alam Sutera Town Center, Block 10 C No. 1",
-    city: "Tangerang Selatan",
-    phone: "+62 857 7626 6740",
-    phoneHref: "tel:+6285776266740",
-    whatsapp: "https://wa.me/6285776266740",
-    maps: "https://maps.google.com/?q=Viceli+Living+Alam+Sutera+Town+Center",
-    image: "/images/showroom-alam.jpg",
-  },
-] as const;
+export const showrooms = source.showrooms;
 
 export const navLinks = [
   { href: "/products", label: "Products" },
@@ -203,49 +184,9 @@ export const craftSteps = [
   },
 ] as const;
 
-export const residences = [
-  {
-    id: "pik",
-    name: "PIK",
-    detail: "A coastal suite that opens to the water.",
-    image: "/images/residence-pik.jpg",
-  },
-  {
-    id: "gading",
-    name: "Gading Serpong",
-    detail: "A family home built around lounge and dining.",
-    image: "/images/residence-gading.jpg",
-  },
-  {
-    id: "ancol",
-    name: "Ancol",
-    detail: "Soft seating for a waterfront apartment.",
-    image: "/images/residence-ancol.jpg",
-  },
-  {
-    id: "bakrie",
-    name: "Bakrie Tower",
-    detail: "Custom joinery for a sky residence.",
-    image: "/images/residence-bakrie.jpg",
-  },
-  {
-    id: "emerald",
-    name: "Emerald Selatan",
-    detail: "A villa with a full living program.",
-    image: "/images/residence-emerald.jpg",
-  },
-] as const;
+export const residences = source.residences;
 
-export const reviews = [
-  {
-    quote: "Furniture Bagus, tempatnya Nyaman, Sales Ramah, Pelayanan Baik.",
-    source: "Google Review",
-  },
-  {
-    quote: "Owner profesional, permintaan diakomodasi, customer puas!",
-    source: "Google Review",
-  },
-] as const;
+export const reviews = source.reviews;
 
-/** Primary consult CTA — PIK WhatsApp */
+/** Primary consult CTA */
 export const primaryConsult = showrooms[0].whatsapp;

@@ -13,10 +13,20 @@ export function CatalogFooter() {
         <ConsultButton href={primaryConsult} />
       </div>
       <div className="mx-auto mt-10 flex max-w-[1400px] flex-col gap-3 text-xs text-muted sm:flex-row sm:gap-8">
-        <Link href={brand.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-stone">
+        <Link
+          href={brand.instagram}
+          target={brand.instagram.startsWith("http") ? "_blank" : undefined}
+          rel={brand.instagram.startsWith("http") ? "noopener noreferrer" : undefined}
+          className="hover:text-stone"
+        >
           Instagram
         </Link>
-        <Link href={brand.tokopedia} target="_blank" rel="noopener noreferrer" className="hover:text-stone">
+        <Link
+          href={brand.tokopedia}
+          target={brand.tokopedia.startsWith("http") ? "_blank" : undefined}
+          rel={brand.tokopedia.startsWith("http") ? "noopener noreferrer" : undefined}
+          className="hover:text-stone"
+        >
           Tokopedia
         </Link>
         <Link href="/visit" className="hover:text-stone">

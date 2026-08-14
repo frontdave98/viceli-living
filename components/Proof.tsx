@@ -20,8 +20,8 @@ export function Proof() {
           </p>
           <a
             href={brand.googleBusiness}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={brand.googleBusiness.startsWith("http") ? "_blank" : undefined}
+            rel={brand.googleBusiness.startsWith("http") ? "noopener noreferrer" : undefined}
             className="mt-6 inline-block text-[11px] uppercase tracking-[0.2em] text-stone/50 transition-colors hover:text-stone"
           >
             View on Google

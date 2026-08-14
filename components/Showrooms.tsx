@@ -80,8 +80,8 @@ export function Showrooms({ hideIntro = false }: ShowroomsProps) {
                     <div className="flex flex-wrap gap-3 pt-2">
                       <Link
                         href={room.whatsapp}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        target={room.whatsapp.startsWith("http") ? "_blank" : undefined}
+                        rel={room.whatsapp.startsWith("http") ? "noopener noreferrer" : undefined}
                         className="group inline-flex items-center gap-3 rounded-full bg-stone px-5 py-2.5 text-sm font-medium text-ink transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
                       >
                         WhatsApp
@@ -91,8 +91,8 @@ export function Showrooms({ hideIntro = false }: ShowroomsProps) {
                       </Link>
                       <Link
                         href={room.maps}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        target={room.maps.startsWith("http") ? "_blank" : undefined}
+                        rel={room.maps.startsWith("http") ? "noopener noreferrer" : undefined}
                         className="inline-flex items-center rounded-full px-5 py-2.5 text-sm text-stone ring-1 ring-white/15 transition-colors hover:ring-white/30"
                       >
                         Directions

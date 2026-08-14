@@ -77,10 +77,10 @@ export function CloseFooter() {
                   </Link>
                 </li>
                 <li>
-                  <a
+                    <a
                     href={brand.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={brand.instagram.startsWith("http") ? "_blank" : undefined}
+                    rel={brand.instagram.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="hover:text-stone"
                   >
                     Instagram
@@ -89,8 +89,8 @@ export function CloseFooter() {
                 <li>
                   <a
                     href={brand.tokopedia}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={brand.tokopedia.startsWith("http") ? "_blank" : undefined}
+                    rel={brand.tokopedia.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="hover:text-stone"
                   >
                     Tokopedia
@@ -104,11 +104,11 @@ export function CloseFooter() {
               </p>
               <a
                 href={primaryConsult}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={primaryConsult.startsWith("http") ? "_blank" : undefined}
+                rel={primaryConsult.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="mt-3 inline-block text-stone/75 hover:text-stone"
               >
-                WhatsApp PIK
+                {showrooms[0].label}
               </a>
             </div>
           </div>

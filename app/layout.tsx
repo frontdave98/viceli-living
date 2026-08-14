@@ -22,8 +22,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: `${brand.name} — Custom Furniture, Jakarta`,
-  description:
-    "Custom-made furniture atelier in Jakarta. Sofas, dining, mirrors, and office pieces. Showrooms at Golf Island PIK and Alam Sutera.",
+  description: brand.description,
   openGraph: {
     title: brand.name,
     description: "Transform your space into the perfect room.",
